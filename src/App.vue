@@ -1,78 +1,39 @@
 <template>
-  <!-- 페이지 제목 -->
-  <h1>영화 정보</h1>
-
-  <!-- 
-    v-for: data 배열을 반복해서 각 영화 정보를 렌더링
-    (movie, i): movie는 현재 요소, i는 인덱스
-    :key: 각 요소를 구분하기 위한 고유값 (여기서는 index 사용)
-  -->
-  <div v-for="(movie, i) in data" :key="i" class="item">
-    <figure>
-      <!-- 
-        :src → 데이터 바인딩 (이미지 경로를 동적으로 연결)
-        템플릿 리터럴(``) 사용 → 변수와 문자열을 함께 사용할 수 있음
-      -->
-      <!-- template 문법이라고 하는데 문자와 변수를 같이 작성 가능함 -->
-      <!-- 작은 따옴표(')나 큰 따옴표(") 대신 백틱(`)으로 감싸줌 -->
-      <img :src="`${movie.imgUrl}`" :alt="movie.title" />
-    </figure>
-
-    <div class="info">
-      <!-- 영화 제목 출력 -->
-      <h3 class="bg-yellow">{{ movie.title }}</h3>
-
-      <!-- 영화 개봉 연도 출력 -->
-      <p>개봉: {{ movie.year }}</p>
-
-      <!-- 영화 장르 출력 -->
-      <p>장르: {{ movie.category }}</p>
-
-      <!-- 
-        클릭 이벤트 바인딩
-        increseLike(i): 해당 인덱스의 영화 좋아요 증가 함수 실행
-        (@:click → Vue 이벤트 문법으로 보이지만 실제로는 @click 형태가 일반적)
-      -->
-      <button @:click="increseLike(i)">좋아요</button>
-
-      <!-- 좋아요 수 출력 -->
-      <span>{{ movie.like }}</span>
-    </div>
-  </div>
+  <Navbar />
+  <Event :text="text" />
+  <Movies
+    :data="data"
+    @openModal="
+      isModal = true;
+      selectedMovie = $event;
+    "
+    @increseLike="increseLike($event)"
+  />
+  <Modal
+    :data="data"
+    :isModal="isModal"
+    :selectedMovie="selectedMovie"
+    @closeModal="isModal = false"
+  />
 </template>
 
 <script>
+import data from "./assets/movies"; // 영화 데이터
+import Navbar from "./components/Navbar.vue";
+import Modal from "./components/Modal.vue";
+import Event from "./components/Event.vue";
+import Movies from "./components/Movies.vue";
+
 export default {
   name: "App",
 
   // 컴포넌트에서 사용하는 데이터 정의
   data() {
     return {
-      // 영화 정보 배열
-      data: [
-        {
-          title: "노량", // 영화 제목
-          year: 2023, // 개봉 연도
-          category: "액션, 드라마", // 장르
-          textRed: "color:red", // 스타일 관련 값 (현재 템플릿에서 사용되지 않음)
-          like: 0, // 좋아요 초기값
-          imgUrl: "./assets/노량.jpg", // 이미지 경로
-        },
-        {
-          title: "아쿠아맨과 로스트 킹덤",
-          year: 2023,
-          category: "액션, 판타지, 어드밴처",
-          like: 0,
-          imgUrl: "./assets/아쿠아맨.jpg",
-        },
-        {
-          title: "3월의 휴가",
-          year: 2023,
-          category: "판타지, 드라마",
-          like: 0,
-          imgUrl: "./assets/3월의휴가.jpg",
-        },
-      ],
+      isModal: false,
+      data: data,
+      selectedMovie: 0,
+      text: "NETFLIX 강렬한 운명의 드라마, 경기크리처",
     };
   },
 
@@ -82,6 +43,12 @@ export default {
       // 전달받은 인덱스(i)에 해당하는 영화의 like 값을 1 증가
       this.data[i].like += 1;
     },
+  },
+  components: {
+    Navbar: Navbar,
+    Modal: Modal,
+    Event: Event,
+    Movies: Movies,
   },
 };
 </script>
@@ -115,6 +82,7 @@ p {
 /* 버튼 오른쪽 여백 */
 button {
   margin-right: 10px;
+  margin-top: 1rem;
 }
 
 /* 영화 카드 스타일 */
@@ -140,5 +108,24 @@ button {
 /* 텍스트 정보 영역 */
 .item .info {
   width: 100%;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .inner {
+  background: #fff;
+  width: 80%;
+  padding: 20px;
+  border-radius: 10px;
 }
 </style>
