@@ -1,5 +1,6 @@
 const data = [
   {
+    id: 0,
     title: "노량", // 영화 제목
     year: 2023, // 개봉 연도
     category: "액션, 드라마", // 장르
@@ -8,6 +9,7 @@ const data = [
     imgUrl: "./assets/노량.jpg", // 이미지 경로
   },
   {
+    id: 1,
     title: "아쿠아맨과 로스트 킹덤",
     year: 2023,
     category: "액션, 판타지, 어드밴처",
@@ -15,6 +17,7 @@ const data = [
     imgUrl: "./assets/아쿠아맨.jpg",
   },
   {
+    id: 2,
     title: "3월의 휴가",
     year: 2023,
     category: "판타지, 드라마",
