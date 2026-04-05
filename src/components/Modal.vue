@@ -17,4 +17,26 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.modal .inner {
+  background: #fff;
+  width: 80%;
+  max-width: 1000px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal .inner h3 {
+  font-size: 24px;
+}
+
+.modal .inner button {
+  background: #eceef1;
+  border: none;
+  color: #424242;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+</style>

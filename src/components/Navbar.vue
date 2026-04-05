@@ -1,8 +1,12 @@
 <template>
   <nav class="navbar">
-    <a href="#">Home</a>
-    <a href="#">Movies</a>
-    <a href="#">About</a>
+    <h2>🎬 인생영화찾기</h2>
+    <div>
+      <a href="#">홈</a>
+      <a href="#">최신영화</a>
+      <a href="#">인기영화</a>
+      <a href="#">추억영화</a>
+    </div>
   </nav>
 </template>
 <script>
@@ -12,13 +16,21 @@ export default {
 </script>
 <style>
 .navbar {
-  background: #000;
-  padding: 20px;
+  border-bottom: solid 1px;
+  padding: 20px 0px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar h2 {
+  color: #000;
+  margin: 0;
+  cursor: pointer;
 }
 
 .navbar a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   padding: 1em;
 }

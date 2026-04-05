@@ -1,12 +1,12 @@
 <template>
   <Navbar />
   <Event :text="text[eventTextNum]" />
-  <!-- searchMovie 이벤트가 발생하면 searchMovie 함수 호출 -->
-  <!-- $emit으로 데이터 검색어를 전달 받을 변수명을 $event로 지정 -->
-  <SearchBar :data="data_temp" @searchMovie="searchMovie($event)" />
-  <p>
-    <button @click="showAllMovie">전체보기</button>
-  </p>
+  <div class="searchbar-showallbutton">
+    <!-- searchMovie 이벤트가 발생하면 searchMovie 함수 호출 -->
+    <!-- $emit으로 데이터 검색어를 전달 받을 변수명을 $event로 지정 -->
+    <SearchBar :data="data_temp" @searchMovie="searchMovie($event)" />
+    <button class="showallbutton" @click="showAllMovie">전체보기</button>
+  </div>
   <Movies
     :data="data_temp"
     @openModal="
@@ -42,9 +42,11 @@ export default {
       data_temp: [...data], // 사본
       selectedMovie: 0,
       text: [
-        "NETFLIX 강렬한 운명의 드라마, 경기크리처",
-        "디즈니 100주년 기념작, 위시",
-        "그날, 대한민국의 운명이 바뀌었다, 서울의 봄",
+        "🔥 지금 가장 많이 본 영화! 인기 영화 TOP 10 바로보기",
+        "🍿 오늘의 추천 영화가 업데이트됐어요, 지금 확인해보세요!",
+        "🌙 하루의 끝, 좋은 영화 한 편으로 마무리하세요",
+        "🫶 혼자 봐도, 같이 봐도 좋은 영화들",
+        "🍿 영화 좀 본다는 사람들이 선택한 작품들",
       ],
       eventTextNum: 0,
       // setInterval()의 타이머를 강제 해제하기 위한 변수
@@ -119,7 +121,7 @@ export default {
 
 /* 전체 레이아웃 설정 (최대 너비 제한 및 가운데 정렬) */
 body {
-  max-width: 768px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -142,31 +144,6 @@ button {
   margin-top: 1rem;
 }
 
-/* 영화 카드 스타일 */
-.item {
-  width: 100%;
-  border: 1px solid #ccc;
-  display: flex; /* 이미지와 텍스트를 가로로 배치 */
-  margin-bottom: 20px;
-  padding: 1rem;
-}
-
-/* 이미지 영역 스타일 */
-.item figure {
-  width: 30%;
-  margin-right: 1rem;
-}
-
-/* 이미지 크기 자동 조정 */
-.item img {
-  width: 100%;
-}
-
-/* 텍스트 정보 영역 */
-.item .info {
-  width: 100%;
-}
-
 .modal {
   background: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -179,10 +156,20 @@ button {
   align-items: center;
 }
 
-.modal .inner {
-  background: #fff;
-  width: 80%;
-  padding: 20px;
+.searchbar-showallbutton {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  gap: 8px;
+}
+
+.showallbutton {
+  margin: 0;
+  padding: 12px;
+  background: #ffffff;
+  border: #000 solid 1px;
+  font-size: 16px;
   border-radius: 10px;
+  cursor: pointer;
 }
 </style>

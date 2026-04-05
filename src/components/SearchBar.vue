@@ -20,7 +20,7 @@
     />
     <button>검색</button>
   </div>
-  <p>{{ inputText }}</p>
+  <!-- <p>{{ inputText }}</p> -->
 </template>
 <script>
 export default {
@@ -54,16 +54,26 @@ export default {
 </script>
 <style>
 .search-box {
-  padding: 10px;
   display: flex;
   justify-content: center;
 }
 
 .search-box input {
-  padding: 5px 10px;
+  padding: 10px 16px;
+  border-radius: 10px 0px 0px 10px;
+  border: solid 1px;
+  font-size: 16px;
+  width: 400px;
 }
 
 .search-box button {
   margin: 0;
+  background: #000;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 16px;
+  cursor: pointer;
 }
 </style>
