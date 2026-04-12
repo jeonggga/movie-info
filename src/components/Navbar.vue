@@ -7,6 +7,10 @@
       <a href="#">인기영화</a>
       <a href="#">추억영화</a>
     </div>
+    <div>
+      <a href="#">로그인</a>
+      <a href="#">회원가입</a>
+    </div>
   </nav>
 </template>
 <script>

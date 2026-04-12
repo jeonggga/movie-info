@@ -16,10 +16,11 @@
     @increseLike="increseLike($event)"
   />
   <Modal
-    :data="data"
+    :data="data_temp"
     :isModal="isModal"
     :selectedMovie="selectedMovie"
     @closeModal="isModal = false"
+    @increseLike="increseLike($event)"
   />
 </template>
 
@@ -142,18 +143,6 @@ p {
 button {
   margin-right: 10px;
   margin-top: 1rem;
-}
-
-.modal {
-  background: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .searchbar-showallbutton {
