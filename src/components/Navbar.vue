@@ -1,15 +1,15 @@
 <template>
   <nav class="navbar">
-    <h2>🎬 인생영화찾기</h2>
+    <h2 @click="$router.push('/')">🎬 인생영화찾기</h2>
     <div>
-      <a href="#">홈</a>
+      <router-link to="/">홈</router-link>
       <a href="#">최신영화</a>
       <a href="#">인기영화</a>
       <a href="#">추억영화</a>
     </div>
     <div>
-      <a href="#">로그인</a>
-      <a href="#">회원가입</a>
+      <router-link to="/login">로그인</router-link>
+      <router-link to="/signup">회원가입</router-link>
     </div>
   </nav>
 </template>
