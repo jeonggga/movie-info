@@ -16,7 +16,7 @@
       </div>
       <div class="movie-text">
         <div class="like">
-          <button @:click="$emit('increseLike', data[selectedMovie].id)">
+          <button @click="$emit('increseLike', data[selectedMovie].id)">
             좋아요
           </button>
           <!-- 좋아요 수 출력 -->
@@ -59,6 +59,7 @@ export default {
     isModal: Boolean,
     selectedMovie: Number,
   },
+  emits: ["closeModal", "increseLike", "openModal"],
   watch: {
     // isModal prop이 변할 때마다 실행되는 감시자
     // newVal = 변경된 새로운 값 (true = 모달 열림, false = 모달 닫힘)
