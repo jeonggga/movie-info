@@ -1,27 +1,12 @@
 <template>
-  <BaseModal :isModal="isModal" size="sm" @closeModal="$emit('closeModal')">
-    <h2>로그인</h2>
-    <div class="input-id-pw">
-      <input type="email" placeholder="이메일" />
-      <input type="password" placeholder="비밀번호" />
-      <button @click="$emit('login')">로그인</button>
-    </div>
-    <!-- 회원가입 버튼 클릭 시 로그인 모달 닫고 회원가입 모달 열기 -->
-    <button @click="$emit('openSignup')">회원가입</button>
-  </BaseModal>
+  <div class="input-id-pw">
+    <input type="text" placeholder="아이디 입력" />
+    <input type="text" placeholder="비밀번호 입력" />
+    <button>로그인</button>
+  </div>
 </template>
-
 <script>
-import BaseModal from "@/components/BaseModal.vue";
-
-export default {
-  name: "LoginModal",
-  components: { BaseModal },
-  props: {
-    isModal: Boolean,
-  },
-  emits: ["closeModal", "login", "openSignup"],
-};
+export default {};
 </script>
 <style>
 .input-id-pw {
@@ -38,7 +23,7 @@ export default {
   max-width: 360px;
   margin: 0 auto; /* 중앙 정렬 */
 
-  padding-top: 20px;
+  padding-top: 100px;
 }
 
 .input-id-pw input,

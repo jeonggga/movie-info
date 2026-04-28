@@ -9,8 +9,10 @@
     </div>
     <div>
       <!-- 클릭 시 부모한테 이벤트 올려보냄 -->
-      <button @click="$emit('openLogin')">로그인</button>
-      <button @click="$emit('openSignup')">회원가입</button>
+      <!-- <button @click="$emit('openLogin')">로그인</button>
+      <button @click="$emit('openSignup')">회원가입</button> -->
+      <router-link to="/login">로그인</router-link>
+      <router-link to="/signup">회원가입</router-link>
     </div>
   </nav>
 </template>

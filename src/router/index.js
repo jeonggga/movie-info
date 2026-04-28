@@ -1,9 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import LoginView from "@/views/LoginView.vue";
+import SignupView from "@/views/SignupView.vue";
 
 const routes = [
   { path: "/", name: "Home", component: HomeView },
-  // { path: "/login", name: "Login", component: LoginView },
+  { path: "/login", name: "Login", component: LoginView },
+  { path: "/signup", name: "Signup", component: SignupView },
 ];
 
 // 라우터 인스턴스를 생성하고 설정

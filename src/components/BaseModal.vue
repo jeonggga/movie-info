@@ -2,15 +2,15 @@
   <!-- 
     v-if="isModal" : isModal이 true일 때만 모달 전체를 화면에 렌더링
     @click.self    : 자기 자신(.overlay)을 클릭했을 때만 실행
-                     .self가 없으면 inner 클릭해도 닫혀버림
+                     .self가 없으면 inner-base 클릭해도 닫혀버림
   -->
   <div class="overlay" v-if="isModal" @click.self="$emit('closeModal')">
     <!-- 
-      :class="`inner--${size}`" : props로 받은 size 값에 따라 클래스 동적 적용
-                                   size="sm" 이면 → inner--sm 클래스 적용
-                                   size="md" 이면 → inner--md 클래스 적용
+      :class="`inner-base--${size}`" : props로 받은 size 값에 따라 클래스 동적 적용
+                                   size="sm" 이면 → inner-base--sm 클래스 적용
+                                   size="md" 이면 → inner-base--md 클래스 적용
     -->
-    <div class="inner" :class="`inner--${size}`">
+    <div class="inner-base" :class="`inner-base--${size}`">
       <!-- 닫기 버튼 클릭 시 부모한테 'closeModal' 이벤트를 올려보냄 -->
       <button class="close-btn" @click="$emit('closeModal')">
         <XIcon :size="24" :stroke-width="2" />
@@ -76,7 +76,7 @@ export default {
   justify-content: center; /* 가로 중앙 */
 }
 
-.inner {
+.inner-base {
   position: relative; /* 닫기 버튼(absolute)의 기준점 */
   background: #fff;
   border-radius: 16px;
@@ -84,15 +84,15 @@ export default {
 }
 
 /* size prop에 따라 너비 결정 */
-.inner--sm {
+.inner-base--sm {
   width: 360px;
 }
-.inner--md {
+.inner-base--md {
   width: 520px;
 }
 
 .close-btn {
-  position: absolute; /* .inner 기준으로 위치 잡음 */
+  position: absolute; /* .inner-base 기준으로 위치 잡음 */
   top: 16px;
   right: 16px;
   background: none;
